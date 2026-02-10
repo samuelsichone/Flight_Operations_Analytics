@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.swp
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Environment Variables
+.env
+.env.*
+
+# Airflow
+airflow.db
+logs/
+airflow-webserver.pid
+airflow-scheduler.pid
+
+# Docker
+*.tar
+*.gz
+docker-compose.override.yml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# dbt
+target/
+dbt_packages/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+*.pem
+*.key
+*.crt
+
+# Build
+dist/
+build/
+*.egg-info/
