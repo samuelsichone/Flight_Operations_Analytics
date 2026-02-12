@@ -14,6 +14,9 @@ def run_bronze_ingestion(**context):
     timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
 
     path = Path(f"/opt/airflow/data/bronze/flights_{timestamp}.json")
+    
+     # ✅ create directory if missing
+    path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(path, "w") as f:
         json.dump(data, f)
