@@ -2,12 +2,17 @@ import sys
 from pathlib import Path
 from datetime import datetime, timedelta
 from airflow import DAG
+#from airflow.providers.standard.operators.python import PythonOperator
 from airflow.operators.python import PythonOperator
 
 AIRFLOW_HOME = Path("/opt/airflow")
 
 if str(AIRFLOW_HOME) not in sys.path:
     sys.path.insert(0, str(AIRFLOW_HOME))
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]  # one level above dags/
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.bronze_ingest import run_bronze_ingestion
 from scripts.silver_transform import run_silver_transform
@@ -23,8 +28,8 @@ default_args = {
 with DAG(
     dag_id="flights_ops_medallion_pipe",
     default_args=default_args,
-    start_date=datetime(2025, 12, 10),
-    schedule_interval="*/30 * * * *",
+    start_date=datetime(2026, 2, 10),
+    schedule="*/30 * * * *",
     catchup=False,
 ) as dag:
 
